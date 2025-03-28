@@ -47,13 +47,13 @@ export const TableItems = (props: TableItemProps) => {
         {(header ? header : Object.keys(data[0])).map((headerCell: string, index: number) =>
           <div style={{ width: '100%', border: "1px solid grey"}} key={`${JSON.stringify(headerCell)}${index}`}>{headerCell}</div>)}
       </div>
-      {data.map((row: RowType<Record<string, string>>, index: number) => {
+      {data.map((row: RowType<Record<string, string>>, rowIndex: number) => {
         const newArr = Object.values(row).map((cell) => cell);
 
         return (
-          <div style={{ display: "flex" }} key={`${JSON.stringify(row)}${index}`}>
-              {newArr.map((cell: string, index) => {
-                const cellId = `${cell}-${index}`;
+          <div style={{ display: "flex" }} key={`${JSON.stringify(row)}${rowIndex}`}>
+              {newArr.map((cell: string, cellIndex) => {
+                const cellId = `${cell}-${cellIndex}-${rowIndex}`;
                 return (
                   editId === cellId ? 
                     <InputCell
